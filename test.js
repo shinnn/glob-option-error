@@ -55,8 +55,14 @@ test('GlobOptionError', t => {
 
   t.throws(
     () => new GlobOptionError(),
-    /^TypeError.*Expected an array of errors, but got a non-array value undefined\./,
+    /^TypeError.*Expected 1 argument \(Array<errors>\), but got no arguments\./,
     'should throw an error when it takes no arguments.'
+  );
+
+  t.throws(
+    () => new GlobOptionError([new Error('0')], [new TypeError('1')]),
+    /^TypeError.*Expected 1 argument \(Array<errors>\), but got 2 arguments\./,
+    'should throw an error when it takes too many arguments.'
   );
 
   t.end();

@@ -44,9 +44,7 @@ const GlobOptionError = require('glob-option-error');
 ### GlobOptionError(*array*)
 
 *array*: `Array<error>` (return value of [validate-glob-opts](https://github.com/shinnn/validate-glob-opts#api))  
-Return: `Error`
-
-The returned error has an [iterator](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols) that returns the individual errors one by one.
+Return: `Error` with an [iterator](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Iteration_protocols) that returns the individual errors one by one
 
 ```javascript
 const GlobOptionError = require('glob-option-error');
@@ -73,7 +71,7 @@ for (const {message} of error) {
 }
 ```
 
-The argument must include at least one error. That means you should check the array length before passing it to `GlobOptionError`.
+The argument must include at least one element.
 
 ```javascript
 new GlobOptionError([]);

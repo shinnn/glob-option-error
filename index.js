@@ -9,11 +9,17 @@ const inspect = require('util').inspect;
 const isTypeError = err => err.name === 'TypeError';
 const createMessageLine = (msg, err, index) => `${msg}\n  ${(index + 1)}. ${err.message}`;
 
-module.exports = function GlobOptionError(arr) {
+module.exports = function GlobOptionError(...args) {
+  const argLen = args.length;
+
+  if (argLen !== 1) {
+    throw new TypeError(`Expected 1 argument (Array<errors>), but got ${argLen || 'no'} arguments.`);
+  }
+
+  const [arr] = args;
+
   if (!Array.isArray(arr)) {
-    throw new TypeError(`Expected an array of errors, but got a non-array value ${
-      inspect(arr)
-    }.`);
+    throw new TypeError(`Expected an array of errors, but got a non-array value ${inspect(arr)}.`);
   }
 
   const count = arr.length;
