@@ -4,7 +4,7 @@
 */
 'use strict';
 
-const inspect = require('util').inspect;
+const {inspect} = require('util');
 
 const isTypeError = err => err.name === 'TypeError';
 const createMessageLine = (msg, err, index) => `${msg}\n  ${(index + 1)}. ${err.message}`;
